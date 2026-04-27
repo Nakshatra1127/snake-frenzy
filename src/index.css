@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "VT323", monospace;
+  --font-mono: "Press Start 2P", monospace;
+}
+
+.glitch-text {
+  text-shadow: 2px 2px 0px #00ffff, -2px -2px 0px #ff00ff;
+  color: #fff;
+}
+
+.glitch-text-anim {
+  animation: text-glitch 2s infinite;
+}
+
+.screen-tear {
+  animation: tear 4s infinite step-end;
+}
+
+.scanlines {
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.4));
+  background-size: 100% 4px;
+}
+
+@keyframes text-glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px); text-shadow: 4px 0 0px #00ffff, -4px 0 0px #ff00ff; }
+  21% { transform: translate(2px, -2px) }
+  22% { transform: translate(0); text-shadow: 2px 2px 0px #00ffff, -2px -2px 0px #ff00ff; }
+  60% { transform: translate(0) }
+  61% { transform: translate(3px, 0) skewX(10deg); }
+  62% { transform: translate(0) skewX(0); }
+  100% { transform: translate(0) }
+}
+
+@keyframes tear {
+  0%, 90% { transform: translateX(0); }
+  91% { transform: translateX(-5px); clip-path: inset(20% 0 40% 0); }
+  92% { transform: translateX(5px); clip-path: inset(60% 0 10% 0); }
+  93% { transform: translateX(0); clip-path: none; }
+}
